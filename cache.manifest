@@ -4,7 +4,6 @@
 CACHE:
 alert.mjs
 cache.html
-cache.manifest
 config.mjs
 index.html
 lapse.mjs
