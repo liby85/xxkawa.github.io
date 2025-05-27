@@ -170,11 +170,55 @@
         setTimeout(goldhenSuccess, 500);
       }
     });
+  fetch('/version.json', { cache: 'no-store' })
+    .then(response => response.json())
+    .then(data => {
+      const serverVersion = data.version;
+      const notice = document.getElementById('version_notice');
+      notice.style.display = 'block';
+
+      if (CURRENT_VERSION === serverVersion) {
+        // 绿色：已是最新版本
+        notice.style.color = '#2e7d32';
+        notice.style.backgroundColor = '#c8e6c9';
+        notice.style.borderColor = '#388e3c';
+        notice.textContent = '当前版本：' + CURRENT_VERSION + '，已是最新版本。';
+      } else {
+        // 红色：版本不一致，建议刷新
+        notice.style.color = '#b71c1c';
+        notice.style.backgroundColor = '#ffcdd2';
+        notice.style.borderColor = '#d32f2f';
+        notice.textContent = '检测到新版本：' + serverVersion + '，请刷新页面以获取最新内容。';
+      }
+    })
+    .catch(err => {
+      const notice = document.getElementById('version_notice');
+      notice.style.display = 'block';
+      notice.style.color = '#b71c1c';
+      notice.style.backgroundColor = '#ffcdd2';
+      notice.style.borderColor = '#d32f2f';
+      notice.textContent = '版本检测失败，请检查网络或稍后再试。';
+      console.error('版本检测错误:', err);
+    });
+</script>
+
   </script>
 </head>
 <body>
   <div class="container">
     <h1>PSFree 9.00 可缓存免USB版 - 破解页</h1>
+    <div id="version_notice" style="
+    background-color: #ffecb3;
+    border: 2px solid #fbc02d;
+    border-radius: 8px;
+    color: #795548;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+  "></div>
     <p style="background: rgba(255,255,255,0.5); padding: 10px; border-radius: 8px; font-weight: bold;">
       本站由 <strong>xxKawa</strong> 制作  
       <strong style="margin-left: 5.20px;">♥ Love with Mizu <3 ♥</strong>
@@ -183,7 +227,27 @@
       Support with <strong>SiSTR0 kmeps4 anonymous</strong>
     </p>
     <span id="busuanzi_container_site_pv">本站已经帮助<span id="busuanzi_value_site_pv"></span>台PS4完成破解。</span>
+
     <hr>
+
+    <div style="margin-top: 20px; background: rgba(255,255,255,0.7); padding: 15px; border-radius: 10px; display: inline-block;">
+      <p style="margin: 0 0 10px; font-weight: bold; color: #b71c1c;">
+        如果弹出错误提示并返回本页面，但没有自动加载，请点击下方按钮手动刷新：
+      </p>
+      <button onclick="location.reload();" style="
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      ">
+        手动刷新页面
+      </button>
+    </div>
 
     <div class="warning">
       <div class="warning-title">使用须知</div>
@@ -206,7 +270,7 @@
 
     <pre id="console"></pre>
   </div>
-  
+  <script>const CURRENT_VERSION = "1.0.5";</script>
   <script src="payload.js"></script>
   <script type="module" src="./alert.mjs"></script>
 

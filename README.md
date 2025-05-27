@@ -1,10 +1,10 @@
 # 基于PSFree Webkit漏洞与Lapse Kernel漏洞 再开发的可缓存在线注入网站
-
 现有优势：
 
 * 通过applicationCache功能，实现网站在PS4平台上的浏览器中的缓存。判断系统内是否有缓存决定自动化向用户展示对应页面。解决PS4 Jailbreak机大多运行在无网络环境下的痛点。
 
-最后更新时间：2025/5/21 21：00 与PSFree同步代码。
+最后更新时间：2025/5/28 04：00。
+[查看更新日志](./CHANGELOG.md)
 
 ## COPYRIGHT AND AUTHORS:
 

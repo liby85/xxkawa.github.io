@@ -1,21 +1,23 @@
-CACHE MANIFEST
-# v1.0.3 - 2025-05-21
+﻿CACHE MANIFEST
+# v1.0.5 - 2025-05-28
 
 CACHE:
-index.html
-style.css
-fonts/LiberationMono-Regular.ttf
 alert.mjs
+cache.html
+cache.manifest
 config.mjs
+index.html
 lapse.mjs
 payload.bin
 payload.js
 psfree.mjs
+README.md
 send.mjs
-cache.html
-kpatch/900.elf
+style.css
+fonts/LiberationMono-Regular.ttf
 kpatch/900.c
 kpatch/900.d
+kpatch/900.elf
 kpatch/900.o
 kpatch/Makefile
 kpatch/script.ld
