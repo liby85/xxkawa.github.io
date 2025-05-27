@@ -1,5 +1,5 @@
 $manifestFile = "cache.manifest"
-$excludedPatterns = @(".ps1", ".json",".exe", ".txt", ".py", ".git", ".mp4", "COPYING", "LICENSE", "media")
+$excludedPatterns = @(".ps1", ".json",".md",".exe", ".txt", ".py", ".git", ".mp4", "COPYING", "LICENSE", "media")
 $basePath = Get-Location
 
 $version = Read-Host "Please Input New Version Number:"
