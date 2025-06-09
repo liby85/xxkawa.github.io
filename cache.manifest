@@ -40,7 +40,6 @@ payloads/Bins/Tools/ToDex.bin
 payloads/Bins/Tools/ToKratos.bin
 payloads/Bins/Tools/WebRTE_900.bin
 payloads/GoldHEN/GoldHEN.bin
-payloads/HEN/HEN.bin
 psfree/alert.mjs
 psfree/config.mjs
 psfree/lapse.mjs
