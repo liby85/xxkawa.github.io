@@ -2,8 +2,8 @@
 <html manifest="./cache.manifest">
   <head>
     <script>
-    function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";}
-    function DisplayCacheProgress(){setTimeout(function(){;document.title="Cache Success !";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+    function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="正在安装离线缓存: " + Percent + "%";}
+    function DisplayCacheProgress(){setTimeout(function(){;document.title="离线缓存安装完成！";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
     </script>
     <meta charset="UTF-8">
     <title>PSFree 可缓存免USB版 Powered by xxKawa</title>
