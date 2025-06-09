@@ -1,212 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <title>PSFree 9.00 可缓存免USB版 - 破解页</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    @font-face {
-      font-family: 'logging';
-      src: url('fonts/LiberationMono-Regular.ttf');
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #e0eafc, #cfdef3);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: #333;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 30px;
-      color: #1a237e;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-      margin-bottom: 10px;
-    }
-
-    hr {
-      border: none;
-      border-top: 1px solid #bbb;
-      margin: 20px 0 40px;
-    }
-
-    .warning, .success {
-      background-color: rgba(255, 255, 255, 0.85);
-      border-left: 5px solid;
-      padding: 20px;
-      margin: 30px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      text-align: left;
-    }
-
-    .warning {
-      border-color: #f44336;
-    }
-
-    .success {
-      border-color: #4CAF50;
-    }
-
-    .warning-title {
-      font-weight: bold;
-      font-size: 20px;
-      color: #b71c1c;
-      text-align: center;
-      margin-bottom: 12px;
-    }
-
-    .warning ul {
-      list-style: disc inside;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .warning li {
-      margin-bottom: 0.6em;
-    }
-
-    #progress h1 {
-      font-size: 24px;
-      color: #0d47a1;
-      margin: 60px 0 300px;
-    }
-
-    #status_msg {
-      font-size: 22px;
-      color: #2e7d32;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    #console {
-      font-family: 'logging', monospace;
-      background: #1e1e1e;
-      color: #00ff00;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 30px;
-      box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.2);
-      overflow-x: auto;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 24px;
-      }
-
-      #progress h1 {
-        font-size: 20px;
-      }
-
-      #status_msg {
-        font-size: 18px;
-      }
-    }
-  </style>
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <script>
-    if (window.applicationCache && window.applicationCache.status === 0) {
-      window.location.replace("cache.html");
-    }
-
-    window.addEventListener('load', function () {
-      checkGoldHENStatus();
-    });
-
-    function checkGoldHENStatus() {
-      if (window.localStorage.getItem('goldhen_activated') === 'true') {
-        showSuccess();
-        return true;
-      }
-
-      try {
-        if (window.goldhen_loaded === true) {
-          showSuccess();
-          return true;
-        }
-      } catch (e) { }
-
-      return false;
-    }
-
-    function showSuccess() {
-      document.getElementById('progress').style.display = 'none';
-      document.getElementById('menu').style.display = 'block';
-      document.getElementById('status_msg').innerHTML = "GoldHEN 已激活 ✔";
-    }
-
-    function goldhenSuccess() {
-      window.localStorage.setItem('goldhen_activated', 'true');
-      window.goldhen_loaded = true;
-      showSuccess();
-    }
-
-    window.allset = function () {
-      goldhenSuccess();
-    };
-
-    document.addEventListener('DOMNodeInserted', function (e) {
-      if (e.target && e.target.textContent) {
-        const text = e.target.textContent.toLowerCase();
-        if (text.includes('jailbreak has been successful') ||
-            text.includes('goldhen') ||
-            text.includes('goldhen already injected')) {
-          goldhenSuccess();
-        }
-      }
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.keyCode === 88 || e.key === 'x' || e.key === 'X') {
-        setTimeout(goldhenSuccess, 500);
-      }
-    });
-  fetch('/version.json', { cache: 'no-store' })
-    .then(response => response.json())
-    .then(data => {
-      const serverVersion = data.version;
-      const notice = document.getElementById('version_notice');
-      notice.style.display = 'block';
-
-      if (CURRENT_VERSION === serverVersion) {
-        // 绿色：已是最新版本
-        notice.style.color = '#2e7d32';
-        notice.style.backgroundColor = '#c8e6c9';
-        notice.style.borderColor = '#388e3c';
-        notice.textContent = '当前版本：' + CURRENT_VERSION + '，已是最新版本。';
-      } else {
-        // 红色：版本不一致，建议刷新
-        notice.style.color = '#b71c1c';
-        notice.style.backgroundColor = '#ffcdd2';
-        notice.style.borderColor = '#d32f2f';
-        notice.textContent = '检测到新版本：' + serverVersion + '，请重新缓存浏览器（三清）获取最新内容。';
-      }
-    })
-    .catch(err => {
-      const notice = document.getElementById('version_notice');
-      notice.style.display = 'block';
-      notice.style.color = '#b71c1c';
-      notice.style.backgroundColor = '#ffcdd2';
-      notice.style.borderColor = '#d32f2f';
-      notice.textContent = '版本检测失败，请检查网络或稍后再试。';
-      console.error('版本检测错误:', err);
-    });
-</script>
-
-  </script>
-</head>
-<body>
+<html manifest="./cache.manifest">
+  <head>
+    <script>
+    function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Installing offline cache: " + Percent + "%";}
+    function DisplayCacheProgress(){setTimeout(function(){;document.title="Cache Success !";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+    </script>
+    <meta charset="UTF-8">
+    <title>PSFree 可缓存免USB版 Powered by xxKawa</title>
+    <link rel='stylesheet' href='./css/index.css'>
+  </head>
+  <body>
   <div class="container">
-    <h1>PSFree 9.00 可缓存免USB版 - 破解页</h1>
+  <h1>PSFree 可缓存免USB版</h1>
     <div id="version_notice" style="
     background-color: #ffecb3;
     border: 2px solid #fbc02d;
@@ -219,7 +24,7 @@
     text-align: center;
     display: none;
   "></div>
-    <p style="background: rgba(255,255,255,0.5); padding: 10px; border-radius: 8px; font-weight: bold;">
+    <p style="background: rgba(255,255,255,0.5); color: #555;padding: 10px; border-radius: 8px; font-weight: bold;">
       本站由 <strong>xxKawa</strong> 制作  
       <strong style="margin-left: 5.20px;">♥ Love with Mizu <3 ♥</strong>
     </p>
@@ -227,28 +32,6 @@
       Support with <strong>SiSTR0 kmeps4 anonymous</strong>
     </p>
     <span id="busuanzi_container_site_pv">本站已经帮助<span id="busuanzi_value_site_pv"></span>台PS4完成破解。</span>
-
-    <hr>
-
-    <div style="margin-top: 20px; background: rgba(255,255,255,0.7); padding: 15px; border-radius: 10px; display: inline-block;">
-      <p style="margin: 0 0 10px; font-weight: bold; color: #b71c1c;">
-        如果弹出错误提示并返回本页面，但没有自动加载，请点击下方按钮手动刷新：
-      </p>
-      <button onclick="location.reload();" style="
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        background-color: #f44336;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      ">
-        手动刷新页面
-      </button>
-    </div>
-
     <div class="warning">
       <div class="warning-title">使用须知</div>
       <ul>
@@ -257,22 +40,145 @@
         <li>破解完成后，会自动注入GoldHEN。</li>
       </ul>
     </div>
-
-    <div id="progress">
-      <h1>GoldHEN 正在加载，请等待左上角弹出提示...</h1>
+    <hr>
+    <!-- Floating Menu -->
+    <div class="floating-menu">
+      <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">系统工具</button>
+      <button onclick="showsettings()" class="menu-btn" id="settings-btn">设置</button>
+      <button onclick="showabout()" class="menu-btn" id="about-btn">更新日志</button>
     </div>
 
-    <div id="menu" style="display: none;">
-      <div class="success">
-        <h1 id="status_msg">GoldHEN 已激活。</h1>
+    <pre id="update-results" style="white-space: pre-wrap; margin-top: 10px;"></pre>
+
+    <div id="jailbreak-page">
+      <div class="center-btn-wrap">
+      <button id="jailbreak" class="ps-btn">
+        按此开始注入漏洞
+      </button>
+     </div>
+      <div class="loader" id="loader" style="display: none;">
+      <div class="loader-circle"></div>
+     </div>
+  </div>
+
+    
+    <div id="payloads-page" style="display: none;">
+      <nav class="floating-menu-payloads">
+        <button onclick="showtoolspayloads()">工具</button>
+        <button onclick="showlinuxpayloads()">Linux</button>
+      </nav>
+      <div id="payloads-tools" style="display: block;">
+        <h2 id="tools">工具</h2>
+          <div class="button-container" id="button-container">
+            <button id="binloader">Bin-Loader</button>
+            <button data-func="load_AppDumper">App-Dumper</button>
+            <button data-func="load_KernelDumper">Kernel-Dumper</button>
+            <button data-func="load_VTXDumper">PS4-Dumper-VTX</button>
+            <button data-func="load_App2USB">App2USB</button>
+            <button data-func="load_DisableUpdates">Disable-Updates</button>
+            <button data-func="load_EnableUpdates">Enable-Updates</button>
+            <button data-func="load_FTP">FTP</button>
+            <button data-func="load_HistoryBlocker">History-Blocker</button>
+            <button data-func="load_KernelClock">Kernel-Clock</button>
+            <button data-func="load_Orbis">Orbis-Toolbox</button>
+            <button data-func="load_PS4Debug">PS4-Debug</button>
+            <button data-func="load_ToDex">ToDex</button>
+            <button data-func="load_ToDev">ToDev</button>
+            <button data-func="load_ToKratos">ToKratos</button>
+            <button data-func="load_ToCex">ToCex</button>
+            <button data-func="load_BackupDB">Backup-DB</button>
+            <button data-func="load_RestoreDB">Restore-DB</button>
+            <button data-func="load_RIFRenamer">RIF-Renamer</button>
+            <button data-func="load_ExitIDU">ExitIDU</button>
+            <button data-func="load_DisableASLR">Disable-ASLR</button>
+            <button data-func="load_ModuleDumper">Module-Dumper</button>
+            <button data-func="load_WebrRTE">WebRTE</button>
+            <button data-func="load_PermanentUART">Permanent-UART</button>
+            <button data-func="load_PUPDecrypt">PUP-Decrypt</button>
+          </div>
+      </div>
+      </div>
+      <div id="payloads-linux" style="display: none;">
+          <h2 id="tools">Linux</h2>
+          <div class="button-container" id="button-container">
+            <button data-func="load_Linux">Linux-1GB</button>
+            <button data-func="load_Linux2gb">Linux-2GB</button>
+            <button data-func="load_Linux3gb">Linux-3GB</button>
+            <button data-func="load_Linux4gb">Linux-4GB</button>
+            <button data-func="load_Linux5gb">Linux-5GB</button>
+          </div>
       </div>
     </div>
+    
+    <div id="DebugConsole">
+      <div class="console" style="padding: 20px;"><pre id='console'></pre></div>
+    </div>
 
-    <pre id="console"></pre>
-  </div>
-  <script>const CURRENT_VERSION = "1.0.5";</script>
-  <script src="payload.js"></script>
-  <script type="module" src="./alert.mjs"></script>
+    <!-- Settings Popup -->
+    <div class="overlay" id="overlay-popup"></div>
+    <div class="popup" id="settings-popup">
+      <h2>PSFree 设置页面</h2>
 
-</body>
+      <div id="jbdebug">
+        <label id="autojbchkb">
+          <input type="checkbox" id="ckbaj" />
+          <p id="agtext">自动加载漏洞</p>
+          <p class="warning-text">不建议勾选自动加载 极大影响漏洞加载成功率</p>
+        </label>
+        <label id="debugconsolechkb">
+          <input type="checkbox" id="ckbdc" checked />
+          <p id="agtext">显示调试菜单</p>
+        </label>
+      </div>
+
+      <button onclick="closesettings()" class="close-btn" id="close-settings">Close</button>
+      <!--<button data-func="load_AppCache" class="install-psfrl" id="install-psfrl">Install PSFree-Lite</button>-->
+    </div>
+
+    <!-- About Popup -->
+    <div class="overlay" id="overlay-popup"></div>
+    <div class="popup" id="about-popup">
+      <h2>更新日志</h2>
+      <div id="PS4FWOK">
+        <h3>PS4 固件支持列表</h3>
+        <div id="listfw">
+          <p>7.00</p>
+          <p>7.01</p>
+          <p>7.02</p>
+          <p>7.50</p>
+          <p>7.51</p>
+          <p>7.55</p>
+          <p>8.00</p>
+          <p>8.01</p>
+          <p>8.03</p>
+          <p>8.50</p>
+          <p>8.52</p>
+          <p>9.00</p>
+          <p>9.03</p>
+          <p>9.04</p>
+          <p>9.50</p>
+          <p>9.51</p>
+          <p>9.60</p>
+        </div>
+        
+      </div>
+      <div>
+       <p style="background: rgba(255,255,255,0.5); padding: 10px; border-radius: 8px; font-weight: bold;">
+       当前支持版本：7.00 - 9.60<br>
+        <strong>PSFree 更新日志：</strong> - v1.0.7<br>
+        <strong>2025-06-09</strong><br>
+        <strong>更新内容：</strong><br>
+        1.新增7.00 - 9.60固件支持<br>
+        2.加载漏洞变更为手动加载（设置内可选自动加载）<br>
+        3.修复了加载流程，使成功率大幅上升<br>
+        4.加入了Payloads功能（感谢SiSTRO、Nazky）<br>
+        5.重写了缓存机制（感谢Nazky）
+       </p>
+      <button  onclick="closeabout()" class="close-btn" id="close-about">关闭</button>
+    </div>
+
+
+    <script src='./js/index.js'></script>
+  </body>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </html>
