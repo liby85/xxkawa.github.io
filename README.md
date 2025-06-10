@@ -23,3 +23,5 @@ AGPL-3.0-or-later (see src/COPYING). This repo belongs to the group
 ## 特别致谢：
 
 * Mizu - 我的爱人 没有她我将无法独自面对生活
+
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
