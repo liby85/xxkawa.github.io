@@ -135,47 +135,42 @@
       <!--<button data-func="load_AppCache" class="install-psfrl" id="install-psfrl">Install PSFree-Lite</button>-->
     </div>
 
-    <!-- About Popup -->
-    <div class="overlay" id="overlay-popup"></div>
-    <div class="popup" id="about-popup">
-      <h2>更新日志</h2>
-      <div id="PS4FWOK">
-        <h3>PS4 固件支持列表</h3>
-        <div id="listfw">
-          <p>7.00</p>
-          <p>7.01</p>
-          <p>7.02</p>
-          <p>7.50</p>
-          <p>7.51</p>
-          <p>7.55</p>
-          <p>8.00</p>
-          <p>8.01</p>
-          <p>8.03</p>
-          <p>8.50</p>
-          <p>8.52</p>
-          <p>9.00</p>
-          <p>9.03</p>
-          <p>9.04</p>
-          <p>9.50</p>
-          <p>9.51</p>
-          <p>9.60</p>
-        </div>
-        
-      </div>
-      <div>
-       <p style="background: rgba(255,255,255,0.5); padding: 10px; border-radius: 8px; font-weight: bold;">
-       当前支持版本：7.00 - 9.60<br>
-        <strong>PSFree 更新日志：</strong> - v1.0.7<br>
-        <strong>2025-06-09</strong><br>
-        <strong>更新内容：</strong><br>
-        1.新增7.00 - 9.60固件支持<br>
-        2.加载漏洞变更为手动加载（设置内可选自动加载）<br>
-        3.修复了加载流程，使成功率大幅上升<br>
-        4.加入了Payloads功能（感谢SiSTRO、Nazky）<br>
-        5.重写了缓存机制（感谢Nazky）
-       </p>
-      <button  onclick="closeabout()" class="close-btn" id="close-about">关闭</button>
+<!-- About Popup -->
+<div class="overlay" id="overlay-popup"></div>
+<div class="popup" id="about-popup">
+  <h2>更新日志</h2>
+  
+  <div id="PS4FWOK">
+    <h3>PS4 固件支持列表</h3>
+    <div id="listfw">
+      <p>7.00</p><p>7.01</p><p>7.02</p><p>7.50</p><p>7.51</p>
+      <p>7.55</p><p>8.00</p><p>8.01</p><p>8.03</p><p>8.50</p>
+      <p>8.52</p><p>9.00</p><p>9.03</p><p>9.04</p><p>9.50</p>
+      <p>9.51</p><p>9.60</p>
     </div>
+  </div>
+
+  <div class="update-log">
+    <p class="supported">当前支持版本：<span>7.00 - 9.60</span></p>
+    
+    <h4>PSFree 更新日志</h4>
+    <p class="version">v1.1.0 - Final</p>
+    <p class="date">2025-08-10</p>
+
+    <h5>更新内容：</h5>
+    <ul>
+      <h3>更新 GoldHEN 到最新 v2.4b18.5</h3>
+      <li>近几个月由于个人生活遭遇严重变故，以及我个人患有很严重的心理健康问题，很遗憾的告知关心项目的各位项目现已停止维护。</li>
+      <li>项目中常提到的 Mizu ，曾是我最亲密的恋人，但最终二人也因现实原因分开，感谢各位对我们二人感情的关注。</li>
+      <li>此项目是我和 Mizu 共同的心血结晶，尤其是在后期所横贯国内外在线网站的稳定性和成功率都值得我们二人骄傲。</li>
+      <li>希望它能继续帮助到更多的 PS4 玩家</li>
+      <li>感谢一直以来支持的你们。</li>
+    </ul>
+  </div>
+
+  <button onclick="closeabout()" class="close-btn" id="close-about">关闭</button>
+</div>
+
     
     </div>
 

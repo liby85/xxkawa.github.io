@@ -6,7 +6,7 @@ const savedc = localStorage.getItem('dbugc');
 const menuBtns = document.querySelectorAll('.menu-btn');
 const psBtns = document.querySelectorAll('.ps-btn');
 const plsbtn = document.querySelectorAll('.button-container button');
-const CURRENT_VERSION = '1.0.7'; 
+const CURRENT_VERSION = '1.1.0 -Final'; 
 
 fetch('/version.json', { cache: 'no-store' })
   .then(response => response.json())
