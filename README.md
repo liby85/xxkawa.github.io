@@ -20,6 +20,18 @@ AGPL-3.0-or-later (see src/COPYING). This repo belongs to the group
 * Baderlink - 在破解页缓存和跳转给了我灵感和启发
 * Nazky - 在多版本设备中提供了莫大的支持
   
-## 特别致谢：
+## Locally
 
-* Mizu - 我的爱人 没有她我将无法独自面对生活
+You need python !
+
+### Python
+##### Linux:
+Just start the 'start_server.sh'.
+
+###### Command:
+```bash
+sudo chmod start_server.sh
+./start_server.sh
+```
+##### Windows:
+Just start (double-click) the start_server.bat.
